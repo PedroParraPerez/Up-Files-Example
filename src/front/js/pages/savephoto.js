@@ -14,9 +14,12 @@ export const Save_photo = () => {
   const [race, setRace] = useState("");
 
 
+
   const saveInfo = () => {
     var data = new FormData();
     data.append("file", image[0]);
+    // data.append("name", name);
+    // data.append("race", race);
 
     fetch(
       "https://3001-pedroparraperez-upfilese-a19funsg7bh.ws-eu34.gitpod.io/api" +
@@ -67,6 +70,7 @@ export const Save_photo = () => {
         />
         <input type="button" value="Save" onClick={saveInfo} /><br/>
       </form>
+
     </div>
   );
 };

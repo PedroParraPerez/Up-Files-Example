@@ -25,6 +25,8 @@ def upload_files():
     )
 
     file_to_upload = request.files.get('file')
+    # name = request.json.get('name')
+    # race = request.json.get('race')
 
 
     upload_result = None
@@ -34,7 +36,9 @@ def upload_files():
         if upload_result:
             imageAnimal = upload_result.get('secure_url')
             member = Member(
-                image = imageAnimal
+                image = imageAnimal,
+                # name = name,
+                # race = race
                 )
 
             try:
