@@ -2,7 +2,8 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
-import { Home } from "./pages/home";
+import { Save_photo } from "./pages/savephoto.js";
+import { Get_photos } from "./pages/listphoto.js";
 
 import injectContext from "./store/appContext";
 
@@ -21,7 +22,8 @@ const Layout = () => {
         <ScrollToTop>
           <Navbar />
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/formRegisterAnimal" element={<Save_photo />} />
+            <Route path="/photolist" element={<Get_photos />} />
           </Routes>
           <Footer />
         </ScrollToTop>

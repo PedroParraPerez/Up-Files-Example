@@ -1,23 +1,25 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 
 import { Context } from "../store/appContext";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
+
 import "../../styles/home.css";
 
-export const Home = () => {
+
+export const Save_photo = () => {
+
   const { store, actions } = useContext(Context);
+
   const [image, setImage] = useState([]);
   const [name, setName] = useState("");
   const [race, setRace] = useState("");
 
+
   const saveInfo = () => {
     var data = new FormData();
     data.append("file", image[0]);
-    data.append("name", name);
-    data.append("race", race);
 
     fetch(
-      "https://3001-4geeksacademy-reactflask-5x407zk5u6o.ws-eu34.gitpod.io/api" +
+      "https://3001-pedroparraperez-upfilese-a19funsg7bh.ws-eu34.gitpod.io/api" +
         "/upload-image",
       {
         method: "POST",
@@ -25,6 +27,7 @@ export const Home = () => {
       }
     );
   };
+ 
 
   return (
     <div className="text-center mt-5">
@@ -59,10 +62,10 @@ export const Home = () => {
           type="file"
           name="file"
           onChange={(event) => {
-            setImage(event.target.value);
+            setImage(event.target.files);
           }}
         />
-        <input type="button" value="Save" onClick={saveInfo} />
+        <input type="button" value="Save" onClick={saveInfo} /><br/>
       </form>
     </div>
   );
