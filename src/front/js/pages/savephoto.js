@@ -12,6 +12,7 @@ export const Save_photo = () => {
   const [image, setImage] = useState([]);
   const [name, setName] = useState("");
   const [race, setRace] = useState("");
+  const [photo, setPhoto] = useState([])
 
 
 
@@ -22,7 +23,7 @@ export const Save_photo = () => {
     // data.append("race", race);
 
     fetch(
-      "https://3001-pedroparraperez-upfilese-a19funsg7bh.ws-eu34.gitpod.io/api" +
+      "https://3001-pedroparraperez-upfilese-h7o8jjichpj.ws-eu38.gitpod.io/api" +
         "/upload-image",
       {
         method: "POST",
@@ -30,14 +31,22 @@ export const Save_photo = () => {
       }
     );
   };
- 
+
+
+  const getInfo = async () => {
+    const response = await fetch("https://3001-pedroparraperez-upfilese-h7o8jjichpj.ws-eu38.gitpod.io/api" +
+    "/get-image",);
+    const data = await response.json();
+    console.log(data)
+    setPhoto( data.results );
+  };
 
   return (
     <div className="text-center mt-5">
-      <h1>Listado de perritos</h1>
+      <h1>Guardar imagenes</h1>
 
       <form className="form">
-        <input
+        {/* <input
           type="text"
           name="name"
           placeholder="name"
@@ -60,7 +69,7 @@ export const Save_photo = () => {
             });
           }}
         />
-        <br />
+        <br /> */}
         <input
           type="file"
           name="file"
@@ -68,9 +77,32 @@ export const Save_photo = () => {
             setImage(event.target.files);
           }}
         />
-        <input type="button" value="Save" onClick={saveInfo} /><br/>
+        <input type="button" value="Guardar imagen" onClick={saveInfo} /><br/>
       </form>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+      <h1>Mostrar imagenes</h1>
+      <input type="button" value="Mostrar imagenes" onClick={getInfo} />
+      <div className="row">
+        <div className="col-xl-12 d-flex mt-2 listcard">
+        {photo.map((photo) => {
+        return (
+          <div key={photo.id} className="card text-center mt-5 bg-primary">
+            <img src={photo.image} />
+            <p>Name:</p>
+            <p>Race:</p>
+          </div>
+        );
+      })}
 
+
+
+
+        </div>
+      </div>
     </div>
   );
 };

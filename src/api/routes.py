@@ -40,7 +40,7 @@ def upload_files():
                 # name = name,
                 # race = race
                 )
-
+                
             try:
                 db.session.add(member)
                 db.session.commit()

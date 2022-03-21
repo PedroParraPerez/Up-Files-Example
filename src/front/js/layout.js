@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Save_photo } from "./pages/savephoto.js";
-import { Get_photos } from "./pages/listphoto.js";
+
 
 import injectContext from "./store/appContext";
 
@@ -23,7 +23,7 @@ const Layout = () => {
           <Navbar />
           <Routes>
             <Route path="/formRegisterAnimal" element={<Save_photo />} />
-            <Route path="/photolist" element={<Get_photos />} />
+
           </Routes>
           <Footer />
         </ScrollToTop>
