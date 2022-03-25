@@ -5,3 +5,13 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
+
+.listcard{
+    display: flex;
+    justify-content: center;
+}
+.card{
+    width: 5rem;
+    height: 5rem;
+    margin-right: 2rem;
+}
