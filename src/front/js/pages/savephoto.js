@@ -10,27 +10,24 @@ export const Save_photo = () => {
   const { store, actions } = useContext(Context);
 
   const [image, setImage] = useState([]);
-  const [name, setName] = useState([]);
-  const [race, setRace] = useState([]);
-  const [all, setAll] = useState({})
-  const [photo, setPhoto] = useState([]) // this is for map (GET)
+  // const [name, setName] = useState("");
+  // const [race, setRace] = useState("");
+  const [photo, setPhoto] = useState([])// This is for map
   
+
 
   const saveInfo = async() => {
     var data = new FormData();
     data.append("file", image[0]);
-    
-    console.log(data)
-    setAll({...all, name})
-    setAll({...all, race})
-    setAll({...all, data})
-    console.log(data)
+    // data.append("name", name);
+    // data.append("race", race);
+
     const response = await fetch(
       "https://3001-pedroparraperez-upfilese-j55yhfzowkv.ws-eu38.gitpod.io/api" +
         "/upload-image",
       {
         method: "POST",
-        body: all,
+        body: data,
       }
       
     );
@@ -41,10 +38,7 @@ export const Save_photo = () => {
        
     }else{alert("el guardado no se ha hecho")}
   };
-  console.log("imagen esss:  " + image)
-  console.log("name esss:  " +name)
-  console.log("race esss:  " +race)
-  console.log("all esss:  " +all)
+
 
   const getInfo = async () => {
     const response = await fetch("https://3001-pedroparraperez-upfilese-j55yhfzowkv.ws-eu38.gitpod.io/api" +
@@ -59,12 +53,15 @@ export const Save_photo = () => {
       <h1>Guardar imagenes</h1>
 
       <form className="form">
-         <input
+        {/* <input
           type="text"
           name="name"
           placeholder="name"
           onChange={(event) => {
-            setName(event.target.value,);
+            setName({
+              ...name,
+              [event.target.name]: event.target.value,
+            });
           }}
         />
         <br />
@@ -73,10 +70,13 @@ export const Save_photo = () => {
           name="race"
           placeholder="Race"
           onChange={(event) => {
-            setRace(event.target.value,);
+            setRace({
+              ...race,
+              [event.target.name]: event.target.value,
+            });
           }}
         />
-        <br /> 
+        <br /> */}
         <input
           type="file"
           name="file"
