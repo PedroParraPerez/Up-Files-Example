@@ -14,7 +14,7 @@ export const Save_photo = () => {
   // const [race, setRace] = useState("");
   const [photo, setPhoto] = useState([])// This is for map
   
-
+  const URL = "https://3001-pedroparraperez-upfilese-dta4f4rhtq9.ws-eu38.gitpod.io/api"
 
   const saveInfo = async() => {
     var data = new FormData();
@@ -23,10 +23,10 @@ export const Save_photo = () => {
     // data.append("race", race);
 
     const response = await fetch(
-      "https://3001-pedroparraperez-upfilese-j55yhfzowkv.ws-eu38.gitpod.io/api" +
-        "/upload-image",
+      URL +
+        "/upload-image/" + 12,
       {
-        method: "POST",
+        method: "PUT",
         body: data,
       }
       
@@ -41,7 +41,7 @@ export const Save_photo = () => {
 
 
   const getInfo = async () => {
-    const response = await fetch("https://3001-pedroparraperez-upfilese-j55yhfzowkv.ws-eu38.gitpod.io/api" +
+    const response = await fetch(URL +
     "/get-image",);
     const data = await response.json();
     console.log(data)
