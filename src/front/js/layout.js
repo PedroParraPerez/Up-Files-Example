@@ -22,7 +22,7 @@ const Layout = () => {
         <ScrollToTop>
           <Navbar />
           <Routes>
-            <Route path="/formRegisterAnimal" element={<Save_photo />} />
+            <Route path="/" element={<Save_photo />} />
 
           </Routes>
           <Footer />
