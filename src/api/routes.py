@@ -15,39 +15,6 @@ import cloudinary.api
 api = Blueprint('api', __name__)
 
 
-
-# @api.route('/upload-image', methods=['POST'])
-# def upload_files():
-#     cloudinary.config(
-#         cloud_name = 'dqhlna24b',
-#         api_key='785699686264573',
-#         api_secret='IEigIKmf9mWFvQG9jk87DYO39eo'
-#     )
-
-#     file_to_upload = request.files.get('file')
-    
-
-
-#     upload_result = None
-
-#     if file_to_upload:
-#         upload_result = cloudinary.uploader.upload(file_to_upload)      
-#         if upload_result:
-#             imageAnimal = upload_result.get('secure_url')
-#             member = Member(
-#                 image = imageAnimal,
-#                 )
-                
-#             try:
-#                 db.session.add(member)
-#                 db.session.commit()
-#                 return jsonify({'results':member.serialize()}), 200
-
-#             except Exception as err:
-#                 print(str(err))
-#                 return jsonify({'message': str(err)}), 500
-
-
 @api.route('/get-image', methods=['GET'])
 def get_image():
     members = Member.query.all()
