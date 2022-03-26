@@ -24,7 +24,7 @@ export const Save_photo = () => {
 
     const response = await fetch(
       URL +
-        "/upload-image/" + 12,
+        "/upload-image/" + 12, //Pongo 12 por que el unico usuario creado tiene la ID 12
       {
         method: "PUT",
         body: data,
